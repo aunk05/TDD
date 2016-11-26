@@ -1,9 +1,6 @@
 package Rosalind;
 
 import org.junit.Test;
-
-import java.util.Arrays;
-
 /*
  * ROSALIND 1.
  */
@@ -13,10 +10,7 @@ public class DNA {
         try {byte[] input = new byte[1000];
         System.in.read(input);
            String testSequence = new String(input, "UTF-8");
-           String rawOutput = Arrays.toString((getCount(testSequence)));
-           String[] counts = rawOutput.substring(1,rawOutput.length()-1).split(",");
-           for (String s: counts){
-            System.out.print(s+" ");}
+           System.out.println(getCount(testSequence));
         } catch(Exception e){e.printStackTrace();}
     }
 
@@ -25,29 +19,30 @@ public class DNA {
 
         String testString ="TAGCT";
         char[] testArray =  testString.toCharArray();
-        int[] resultArray = {1,1,1,2};
+        String resultString = "1 1 1 2";
 
-        assert Arrays.equals(doCount(testArray), resultArray);
+        assert (doCount(testArray).equals(resultString));
     }
 
-    private static int[] getCount(String inputSequence){
+    private static String getCount(String inputSequence){
         char[] testArray =  inputSequence.toCharArray();
         return doCount(testArray);
     }
 
-    private static int[] doCount(char[] sequence){
+    private static String doCount(char[] sequence){
+        
+        int a,c,g,t;
+        a=c=g=t=0;
 
-        int countArray[] = new int[4];
-
-        for(char c: sequence){
-            switch (c) {
-                case 'A': countArray[0]++; break;
-                case 'C': countArray[1]++; break;
-                case 'G': countArray[2]++; break;
-                case 'T': countArray[3]++; break;
+        for(char C: sequence){
+            switch (C) {
+                case 'A': a++; break;
+                case 'C': c++; break;
+                case 'G': g++; break;
+                case 'T': t++; break;
             }
         }
-        return countArray;
+        return a+" "+c+" "+g+" "+t;
     }
 }
 
