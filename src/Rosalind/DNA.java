@@ -30,7 +30,7 @@ public class DNA {
     }
 
     private static String doCount(char[] sequence){
-        
+
         int a,c,g,t;
         a=c=g=t=0;
 
